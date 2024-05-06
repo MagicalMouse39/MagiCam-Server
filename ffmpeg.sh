@@ -1,0 +1,1 @@
+ffmpeg -i /dev/video0 -f rtsp -fflags nobuffer -fflags discardcorrupt -flags low_delay -avioflags direct -strict experimental -tune zerolatency -probesize 32 -analyzeduration 0 -rtsp_transport udp rtsp://localhost:8554/cam.stream
