@@ -2,6 +2,8 @@ from socket import *
 import struct
 from time import sleep
 import json
+import logging
+
 
 MAGICAM_ID = 'MagiCam!'
 
@@ -34,8 +36,7 @@ def send_data(name: str, *values):
             s.connect((ip, 6969))
             s.send(json.dumps({'name': name, 'values': values}).encode())
         except Exception as e:
-            print(f'An error occurred whilst sending data: {name} {values}')
-            print(e)
+            logging.warning(f'An error occurred whilst sending data: {name} {values}: {e}')
 
 
 def update_lights_state(state: bool):
